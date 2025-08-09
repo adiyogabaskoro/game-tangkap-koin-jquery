@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            margin: 100px auto;
+            border: 5px solid black;
+            text-align: center;
+            line-height: 200px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">Klik Saya!</div>
+    <script>
+        // Fungsi untuk membuat warna acak
+        function getRandomColor() {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        $(document).ready(function () {
+        // Event .click
+        $('#box').click(function () {
+            $(this).css('background-color', getRandomColor());
+        });
+
+        // Event .dblclick
+        $('#box').dblclick(function () {
+            $(this).animate({ width: '+=50px', height: '+=50px' }, 300);
+        });
+
+        // Event .mouseenter
+        $('#box').mouseenter(function () {
+            $(this).css('border', '5px dashed red');
+        });
+
+        // Event .mouseleave
+        $('#box').mouseleave(function () {
+            $(this).css('border', '5px solid black');
+        });
+    });
+
+        // Event .keydown
+        $(document).keydown(function(e) {
+            if (e.key === 'r' || e.key === 'R') {
+                $('#box').css('background-color', 'red');
+            } else if (e.key === 'g' || e.key === 'G') {
+                $('#box').css('background-color', 'green');
+            } else if (e.key === 'b' || e.key === 'B') {
+                $('#box').css('background-color', 'blue');
+            }
+        });
+
+
+    </script>
+
+    <!-- <button id="tombol">Klik Saya</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $("#tombol").click(function () {
+            alert("Tombol diklik!");
+        });
+    </script> -->
+</body>
+</html>

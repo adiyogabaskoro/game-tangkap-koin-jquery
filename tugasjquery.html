@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Tangkap Koin</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700; /* bold */
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700; /* bold */
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        #instruksi {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700; /* bold */
+        }
+        #arena {
+            width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            border: 2px solid #333;
+            background-color: white;
+            position: relative;
+        }
+        #coin {
+            width: 50px;
+            height: 50px;
+            background-color: gold;
+            border-radius: 50%;
+            position: absolute;
+            top: 100px;
+            left: 150px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            transition: 0.2s;
+        }
+        #coin:hover {
+            background-color: orange;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #score {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1></h1>Game Tangkap Koin</h1>
+    <button id="instruksi">📜 Instruksi</button>
+    <div id="arena">
+        <div id="coin"></div>
+    </div>
+    <p id="score">Koin tertangkap: 0</p>
+
+    <script>
+        $(document).ready(function(){
+            let score = 0;
+
+            // Button summon alert
+            $("#instruksi").click(function(){
+                alert("Klik koin sebanyak mungkin! Setiap klik = 1 poin. Koin akan pindah posisi secara acak.");
+            });
+
+            // Event handler + click counter
+            $("#coin").click(function(){
+                score++;
+                $("#score").text("Koin tertangkap: " + score);
+
+                // Pindahkan koin ke posisi acak di dalam arena
+                let arenaWidth = $("#arena").width() - $(this).width();
+                let arenaHeight = $("#arena").height() - $(this).height();
+                let randomX = Math.floor(Math.random() * arenaWidth);
+                let randomY = Math.floor(Math.random() * arenaHeight);
+                $(this).css({ top: randomY + "px", left: randomX + "px" });
+            });
+        });
+    </script>
+
+</body>
+</html>

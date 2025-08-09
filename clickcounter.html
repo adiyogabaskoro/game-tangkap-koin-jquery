@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>CSS Manipulation dengan jQuery</title>
+    <style>
+        #box {
+            width: 250px;
+            height: 250px;
+            background-color: lightgray;
+            margin: 50px auto;
+            border: 4px solid black;
+            text-align: center;
+            line-height: 250px;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">Kotak CSS</div>
+    <div class="button-container">
+        <button id="btn-bg">Ubah Background</button>
+        <button id="btn-font">Ubah Ukuran Font</button>
+        <button id="btn-border">Ubah Border</button>
+        <button id="btn-padding">Ubah Padding</button>
+        <button id="btn-radius">Ubah Radius</button>
+        <button id="btn-reset">Reset</button>
+    </div>
+
+    <button id="btn">Klik untuk menambahkan button baru</button>
+    <div id="log"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Fungsi untuk warna acak
+        function getRandomColor() {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        let i = 1;
+        $('#btn').on('click', function() {
+            $('#log').append('ini adalah teks ke ' + i + '<br>');
+            i++;
+        });
+    </script>
+</body>
+</html>
